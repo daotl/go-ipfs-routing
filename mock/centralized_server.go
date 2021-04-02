@@ -6,14 +6,14 @@ import (
 	"sync"
 	"time"
 
+	ds "github.com/daotl/go-datastore"
+	"github.com/daotl/go-datastore/key"
+	dssync "github.com/daotl/go-datastore/sync"
 	cid "github.com/ipfs/go-cid"
-	ds "github.com/ipfs/go-datastore"
-	dssync "github.com/ipfs/go-datastore/sync"
-
 	"github.com/libp2p/go-libp2p-core/peer"
 	"github.com/libp2p/go-libp2p-testing/net"
 
-	offline "github.com/ipfs/go-ipfs-routing/offline"
+	offline "github.com/daotl/go-ipfs-routing/offline"
 )
 
 // server is the mockrouting.Client's private interface to the routing server
@@ -81,7 +81,11 @@ func (rs *s) Providers(c cid.Cid) []peer.AddrInfo {
 }
 
 func (rs *s) Client(p tnet.Identity) Client {
-	return rs.ClientWithDatastore(context.Background(), p, dssync.MutexWrap(ds.NewMapDatastore()))
+	mapds, err := ds.NewMapDatastore(key.KeyTypeString)
+	if err != nil {
+		panic(err)
+	}
+	return rs.ClientWithDatastore(context.Background(), p, dssync.MutexWrap(mapds))
 }
 
 func (rs *s) ClientWithDatastore(_ context.Context, p tnet.Identity, datastore ds.Datastore) Client {

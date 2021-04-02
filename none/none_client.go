@@ -5,13 +5,11 @@ import (
 	"context"
 	"errors"
 
+	ds "github.com/daotl/go-datastore"
 	cid "github.com/ipfs/go-cid"
-	ds "github.com/ipfs/go-datastore"
-
 	"github.com/libp2p/go-libp2p-core/host"
 	"github.com/libp2p/go-libp2p-core/peer"
 	"github.com/libp2p/go-libp2p-core/routing"
-
 	record "github.com/libp2p/go-libp2p-record"
 )
 

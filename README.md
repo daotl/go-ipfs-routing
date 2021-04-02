@@ -1,9 +1,11 @@
 # go-ipfs-routing
 
+DAOT Labs's fork of [ipfs/go-ipfs-routing](https://github.com/ipfs/go-ipfs-routing).
+
 [![](https://img.shields.io/badge/made%20by-Protocol%20Labs-blue.svg?style=flat-square)](http://ipn.io)
-[![](https://img.shields.io/badge/project-IPFS-blue.svg?style=flat-square)](http://ipfs.io/)
+[![](https://img.shields.io/badge/project-DAOT%20Labs-red.svg?style=flat-square)](http://github.com/daotl)
 [![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
-[![Build Status](https://travis-ci.org/ipfs/go-ipfs-routing.svg?branch=master)](https://travis-ci.org/ipfs/go-ipfs-routing)
+[![Build Status](https://travis-ci.org/daotl/go-ipfs-routing.svg?branch=master)](https://travis-ci.org/daotl/go-ipfs-routing)
 
 > go-ipfs-routing provides go-libp2p-routing implementations used in go-ipfs.
 
@@ -19,7 +21,7 @@
 `go-ipfs-routing` works like a set of regular Go packages:
 
 ```
-> go get github.com/ipfs/go-ipfs-routing/...
+> go get github.com/daotl/go-ipfs-routing/...
 ```
 
 This module uses [Gx](https://github.com/whyrusleeping/gx) to manage
@@ -31,10 +33,10 @@ This repo contains 3 different packages.
 
 ### Mock
 
-[![GoDoc](https://godoc.org/github.com/ipfs/go-ipfs-routing/mock?status.svg)](https://godoc.org/github.com/ipfs/go-ipfs-routing/mock)
+[![GoDoc](https://godoc.org/github.com/daotl/go-ipfs-routing/mock?status.svg)](https://godoc.org/github.com/daotl/go-ipfs-routing/mock)
 
 ```
-import "github.com/ipfs/go-ipfs-routing/mock"
+import "github.com/daotl/go-ipfs-routing/mock"
 ```
 
 Mock is a fake router useful for tests. It provides a mock client that
@@ -44,10 +46,10 @@ retrieves routing records.
 
 ### Offline
 
-[![GoDoc](https://godoc.org/github.com/ipfs/go-ipfs-routing/offline?status.svg)](https://godoc.org/github.com/ipfs/go-ipfs-routing/offline)
+[![GoDoc](https://godoc.org/github.com/daotl/go-ipfs-routing/offline?status.svg)](https://godoc.org/github.com/daotl/go-ipfs-routing/offline)
 
 ```
-import "github.com/ipfs/go-ipfs-routing/offline"
+import "github.com/daotl/go-ipfs-routing/offline"
 ```
 
 Offline is an offline router that can put and get records to and from a local
@@ -55,10 +57,10 @@ Offline is an offline router that can put and get records to and from a local
 
 ### None
 
-[![GoDoc](https://godoc.org/github.com/ipfs/go-ipfs-routing/none?status.svg)](https://godoc.org/github.com/ipfs/go-ipfs-routing/none)
+[![GoDoc](https://godoc.org/github.com/daotl/go-ipfs-routing/none?status.svg)](https://godoc.org/github.com/daotl/go-ipfs-routing/none)
 
 ```
-import "github.com/ipfs/go-ipfs-routing/none"
+import "github.com/daotl/go-ipfs-routing/none"
 ```
 
 None is a router no-op router that doesn't do anything. Puts always succeed and
@@ -73,4 +75,6 @@ Small note: If editing the README, please conform to the
 
 ## License
 
-MIT © Protocol Labs, Inc.
+Copyright for portions of this fork are held by Protocol Labs, Inc. as part of the original
+[go-ipfs-routing](https://github.com/ipfs/go-ipfs-routing) project. All other copyright for
+this fork are held by DAOT Labs. All rights reserved.

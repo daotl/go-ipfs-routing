@@ -7,7 +7,7 @@ package mockrouting
 import (
 	"context"
 
-	ds "github.com/ipfs/go-datastore"
+	ds "github.com/daotl/go-datastore"
 	delay "github.com/ipfs/go-ipfs-delay"
 
 	"github.com/libp2p/go-libp2p-core/peer"

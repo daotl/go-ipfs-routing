@@ -5,13 +5,13 @@ import (
 	"context"
 	"testing"
 
+	ds "github.com/daotl/go-datastore"
+	"github.com/daotl/go-datastore/key"
 	cid "github.com/ipfs/go-cid"
-	ds "github.com/ipfs/go-datastore"
-
 	"github.com/libp2p/go-libp2p-core/routing"
 	"github.com/libp2p/go-libp2p-core/test"
-
 	mh "github.com/multiformats/go-multihash"
+	"github.com/stretchr/testify/assert"
 )
 
 type blankValidator struct{}
@@ -22,7 +22,8 @@ func (blankValidator) Select(_ string, _ [][]byte) (int, error) { return 0, nil 
 func TestOfflineRouterStorage(t *testing.T) {
 	ctx := context.Background()
 
-	nds := ds.NewMapDatastore()
+	nds, err := ds.NewMapDatastore(key.KeyTypeString)
+	assert.NoError(t, err)
 	offline := NewOfflineRouter(nds, blankValidator{})
 
 	if err := offline.PutValue(ctx, "key", []byte("testing 1 2 3")); err != nil {
@@ -60,11 +61,12 @@ func TestOfflineRouterStorage(t *testing.T) {
 func TestOfflineRouterLocal(t *testing.T) {
 	ctx := context.Background()
 
-	nds := ds.NewMapDatastore()
+	nds, err := ds.NewMapDatastore(key.KeyTypeString)
+	assert.NoError(t, err)
 	offline := NewOfflineRouter(nds, blankValidator{})
 
 	id, _ := test.RandPeerID()
-	_, err := offline.FindPeer(ctx, id)
+	_, err = offline.FindPeer(ctx, id)
 	if err != ErrOffline {
 		t.Fatal("OfflineRouting should alert that its offline")
 	}

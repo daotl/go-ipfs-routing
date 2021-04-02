@@ -8,14 +8,12 @@ import (
 	"errors"
 	"time"
 
+	ds "github.com/daotl/go-datastore"
+	dshelp "github.com/daotl/go-ipfs-ds-help"
 	proto "github.com/gogo/protobuf/proto"
 	cid "github.com/ipfs/go-cid"
-	ds "github.com/ipfs/go-datastore"
-	dshelp "github.com/ipfs/go-ipfs-ds-help"
-
 	"github.com/libp2p/go-libp2p-core/peer"
 	"github.com/libp2p/go-libp2p-core/routing"
-
 	record "github.com/libp2p/go-libp2p-record"
 	pb "github.com/libp2p/go-libp2p-record/pb"
 )
@@ -67,11 +65,11 @@ func (c *offlineRouting) PutValue(ctx context.Context, key string, val []byte, _
 		return err
 	}
 
-	return c.datastore.Put(dshelp.NewKeyFromBinary([]byte(key)), data)
+	return c.datastore.Put(dshelp.NewStrKeyFromBinary([]byte(key)), data)
 }
 
 func (c *offlineRouting) GetValue(ctx context.Context, key string, _ ...routing.Option) ([]byte, error) {
-	buf, err := c.datastore.Get(dshelp.NewKeyFromBinary([]byte(key)))
+	buf, err := c.datastore.Get(dshelp.NewStrKeyFromBinary([]byte(key)))
 	if err != nil {
 		return nil, err
 	}
