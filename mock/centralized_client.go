@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	cid "github.com/ipfs/go-cid"
-	logging "github.com/ipfs/go-log"
+	logging "github.com/daotl/go-log/v2"
+	"github.com/ipfs/go-cid"
 	"github.com/libp2p/go-libp2p-core/peer"
 	"github.com/libp2p/go-libp2p-core/routing"
 	"github.com/libp2p/go-libp2p-testing/net"
