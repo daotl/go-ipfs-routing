@@ -7,11 +7,11 @@ import (
 
 	ds "github.com/daotl/go-datastore"
 	"github.com/daotl/go-datastore/key"
-	cid "github.com/ipfs/go-cid"
+	"github.com/ipfs/go-cid"
 	"github.com/libp2p/go-libp2p-core/routing"
 	"github.com/libp2p/go-libp2p-core/test"
 	mh "github.com/multiformats/go-multihash"
-	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 type blankValidator struct{}
@@ -23,7 +23,7 @@ func TestOfflineRouterStorage(t *testing.T) {
 	ctx := context.Background()
 
 	nds, err := ds.NewMapDatastore(key.KeyTypeString)
-	assert.NoError(t, err)
+	require.NoError(t, err)
 	offline := NewOfflineRouter(nds, blankValidator{})
 
 	if err := offline.PutValue(ctx, "key", []byte("testing 1 2 3")); err != nil {
@@ -62,7 +62,7 @@ func TestOfflineRouterLocal(t *testing.T) {
 	ctx := context.Background()
 
 	nds, err := ds.NewMapDatastore(key.KeyTypeString)
-	assert.NoError(t, err)
+	require.NoError(t, err)
 	offline := NewOfflineRouter(nds, blankValidator{})
 
 	id, _ := test.RandPeerID()
